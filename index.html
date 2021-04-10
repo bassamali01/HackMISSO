@@ -1,0 +1,552 @@
+<!DOCTYPE html> 
+<html lang="en"><head>
+  
+  <meta charset="utf-8">
+  <title>Healthy Habits</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <meta property="og:title" content="">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:description" content="">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
+  
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!--Circle charts-->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!--Alert style-->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
+  <script src="js/modernizr-2.7.1.js"></script>
+  
+  <style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+    * {box-sizing: border-box;}
+
+  
+  </style>
+
+  <script>
+      var login_bool = false;
+      var username1 = "admin@google.com";
+      var password1 = "123456";
+    var mentalCount = 0;
+    var physCount = 0;
+      var hobbiesCount = 0;
+      var mentalhealth_arr = [];
+      var physicalhealth_arr = [];
+      var hobbies_arr = [];
+
+    
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+      function loginapproval() {
+
+          if ((document.getElementById("username").value == username1) && (document.getElementById("psw").value == password1)) {
+
+              login_bool = true;
+              swal("Successful Login", "", "success");
+
+          }
+          else {
+			  swal("Incorrect Email or Password", "", "error");
+          }
+      }
+      
+      function reset1() {
+          puzzles.value = 0;
+          books.value = 0;
+          journal.value = 0;
+          meditate.value = 0;
+		  document.getElementById("mental_bar").innerHTML = "0%";
+		  document.getElementById("mental_bar").style.width = "0%";
+             
+          document.getElementById("check1").src = "img/empty_circle.png";
+          document.getElementById("check2").src = "img/empty_circle.png";
+          document.getElementById("check").src = "img/empty_circle.png";
+          document.getElementById("check4").src = "img/empty_circle.png";
+      }
+      function reset2() {
+          exercise.value = 0;
+          eat.value = 0;
+          sleep.value = 0;
+          document.getElementById("phys_bar").innerHTML = "0%";
+          document.getElementById("phys_bar").style.width = "0%";
+
+          document.getElementById("check5").src = "img/empty_circle.png";
+          document.getElementById("check6").src = "img/empty_circle.png";
+          document.getElementById("check7").src = "img/empty_circle.png";
+
+      }
+      function reset3() {
+          recipe.value = 0;
+          gardening.value = 0;
+          nactivities.value = 0;
+          music.value = 0;
+          document.getElementById("hobbies_bar").innerHTML = "0%";
+          document.getElementById("hobbies_bar").style.width = "0%";
+
+          document.getElementById("check8").src = "img/empty_circle.png";
+          document.getElementById("check9").src = "img/empty_circle.png";
+          document.getElementById("check10").src = "img/empty_circle.png";
+          document.getElementById("check11").src = "img/empty_circle.png";
+      }
+    
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    //-Checkmarks--
+    function checkMark1(){
+      if(check1.getAttribute("src") == "img/empty_circle.png")
+        {document.getElementById("check1").src="img/green_check.png";
+        puzzles.value=25;
+        mentalCount++;}
+       else
+       {document.getElementById("check1").src="img/empty_circle.png";
+       puzzles.value=0;
+       mentalCount--;}
+    }
+    function checkMark2(){
+      if(check2.getAttribute("src") == "img/empty_circle.png")
+        {document.getElementById("check2").src="img/green_check.png";
+        books.value=25;
+        mentalCount++;}
+        else
+       {document.getElementById("check1").src="img/empty_circle.png";
+       books.value=0;
+       mentalCount--;}
+    }
+    function checkMark3(){
+      if(check3.getAttribute("src") == "img/empty_circle.png")
+        {document.getElementById("check3").src="img/green_check.png";
+        journal.value=25;
+        mentalCount++;}
+        else
+       {document.getElementById("check3").src="img/empty_circle.png";
+       journal.value=0;
+       mentalCount--;}
+    }
+    function checkMark4(){
+      if(check4.getAttribute("src") == "img/empty_circle.png")
+        {document.getElementById("check4").src="img/green_check.png";
+        meditate.value=25;
+        mentalCount++;}
+        else
+       {document.getElementById("check4").src="img/empty_circle.png";
+       meditate.value=0;
+       mentalCount--;}
+    }
+    function checkMark5(){
+      if(check5.getAttribute("src") == "img/empty_circle.png")
+        {document.getElementById("check5").src="img/green_check.png";
+        exercise.value=1/3*100;
+        physCount++;}
+        else
+       {document.getElementById("check5").src="img/empty_circle.png";
+       exercise.value=0;
+       physCount--;}
+    }
+    function checkMark6(){
+      if(check6.getAttribute("src") == "img/empty_circle.png")
+        {document.getElementById("check6").src="img/green_check.png";
+        eat.value=1/3*100;
+        physCount++;}
+        else
+       {document.getElementById("check6").src="img/empty_circle.png";
+       eat.value=0;
+       physCount--;}
+    }
+    function checkMark7(){
+      if(check7.getAttribute("src") == "img/empty_circle.png")
+        {document.getElementById("check7").src="img/green_check.png";
+        sleep.value=1/3*100 + 1;
+        physCount++;}
+        else
+       {document.getElementById("check7").src="img/empty_circle.png";
+       sleep.value=0;
+       physCount--;}
+    }
+    function checkMark8(){
+      if(check8.getAttribute("src") == "img/empty_circle.png")
+        {document.getElementById("check8").src="img/green_check.png";
+        recipe.value=25;
+        hobbiesCount++}
+        else
+       {document.getElementById("check8").src="img/empty_circle.png";
+       recipe.value=0;
+       hobbiesCount--;}
+    }
+    function checkMark9(){
+      if(check9.getAttribute("src") == "img/empty_circle.png")
+        {document.getElementById("check9").src="img/green_check.png";
+        gardening.value=25;
+        hobbiesCount++}
+        else
+       {document.getElementById("check9").src="img/empty_circle.png";
+       gardening.value=0;
+       hobbiesCount--;}
+    }
+    function checkMark10(){
+      if(check10.getAttribute("src") == "img/empty_circle.png")
+        {document.getElementById("check10").src="img/green_check.png";
+        nactivities.value=25;
+        hobbiesCount++}
+        else
+       {document.getElementById("check10").src="img/empty_circle.png";
+       nactivities.value=0;
+       hobbiesCount--;}
+    }
+    function checkMark11(){
+      if(check11.getAttribute("src") == "img/empty_circle.png")
+        {document.getElementById("check11").src="img/green_check.png";
+        music.value=25;
+        hobbiesCount++}
+        else
+       {document.getElementById("check11").src="img/empty_circle.png";
+       music.value=0;
+       hobbiesCount--;}
+    }
+
+      function submitMental() {
+          if (login_bool) {
+              var totalMental = parseInt(puzzles.value) + parseInt(books.value) + parseInt(journal.value) + parseInt(meditate.value);
+
+              document.getElementById("mental_bar").innerHTML = totalMental + "%";
+              document.getElementById("mental_bar").style.width = totalMental + "%";
+              if (mentalCount == 0)
+                  swal("Oops!", "Select activities to record", "warning");
+              else
+                  if (mentalCount == 1)
+                      swal("Good job!", "You completed " + mentalCount + " activity!", "success");
+                  else
+                      if (mentalCount == 4)
+                          swal("Woo hoo!", "You completed all mental health activities!", "success");
+                      else
+                          swal("Good job!", "You completed " + mentalCount + " activities!", "success");
+
+
+              mentalhealth_arr.push(totalMental);
+              /*-document.getElementById("demo").innerHTML = mentalhealth_arr; -->*/
+
+          }
+          else {
+              swal("Please Login", "", "error");
+          }
+      //document.mentalForm.submit();
+    }
+      function submitPhysical() {
+          if (login_bool) {
+
+         
+        var totalPys = (parseInt(exercise.value) + parseInt(eat.value) + parseInt(sleep.value) + parseInt(meditate.value));
+
+        physicalhealth_arr.push(totalPys);
+        /*document.getElementById("demo2").innerHTML = phsyicalhealth_arr;*/
+
+      if(parseInt(totalPys)>70)
+        totalPhys = 100;
+      document.getElementById("phys_bar").innerHTML= totalPys + "%";
+      document.getElementById("phys_bar").style.width= totalPys + "%";
+      if(physCount==0)
+      swal("Oops!","Select activities to record","warning");
+      else
+      if(physCount==1)
+      swal("Good job!", "You completed " + physCount +" activity!", "success");
+      else
+      if(physCount==3)
+      swal("Woo hoo!", "You completed all physical wellness activities!", "success");
+      else
+      swal("Good job!", "You completed " + physCount +" activities!", "success");
+      //document.physicalForm.submit();
+          }
+          else
+           swal("Please Login", "", "error");
+
+    }
+      function submitHobbies() {
+          if (login_bool) {
+              var totalHobbies = (parseInt(recipe.value) + parseInt(gardening.value) + parseInt(nactivities.value) + parseInt(music.value));
+
+              hobbies_arr.push(totalHobbies);
+              /*document.getElementById("demo3").innerHTML = hobbies_arr;*/
+
+              document.getElementById("hobbies_bar").innerHTML = totalHobbies + "%";
+              document.getElementById("hobbies_bar").style.width = totalHobbies + "%";
+              if (hobbiesCount == 0)
+                  swal("Oops!", "Select activities to record", "warning");
+              else
+                  if (hobbiesCount == 1)
+                      swal("Good job!", "You completed " + hobbiesCount + " activity!", "success");
+                  else
+                      if (hobbiesCount == 4)
+                          swal("Woo hoo!", "You completed all interest and hobby activities!", "success");
+                      else
+                          swal("Good job!", "You completed " + hobbiesCount + " activities!", "success");
+          }
+          else {
+              swal("Please Login", "", "error");
+
+          }
+      //document.hobbiesForm.submit();
+      }
+     /* function viewEntries() {
+          var os;
+          var a = mentalhealth_arr.length;
+          var b = physicalhealth_arr.length;
+          var c = hobbies_array.length;
+          var d;
+
+          os = "<table cellspacing = '0'>";
+          if (a >= b) {
+              d = a;
+          }
+          else {
+              if (b >= c) {
+                  d = b;
+              }
+              else {
+                  d = c;
+              }
+          }
+          os += "<tr align = 'center'><td>Mental Health Score (%)</td><td>Physical Health Score (%)</td><td>Hobbies Score (%)</td></tr>"
+          for (i = 0; i < d; i++) {
+              os += "<tr><td>" + mentalhealth_arr[i] + "</td>" + "<td>" + physicalhealth_arr[i] + "</td>" + "<td>" + hobbies_arr[i] + "</td></tr>";
+          }
+          os += "</table>"
+          document.getElementById("entries").innerHTML
+      }*/
+  </script>
+</head>
+
+<body>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+            <img src="img/misso_logo.png" alt="Logo">
+
+            </div>
+          <div class="col-xs-6 signin text-right navbar-nav">
+            <a href="#pricing" class="scroll">Track Habits</a>&nbsp; &nbsp;<a href="javascript: openForm()">Sign in</a>
+          </div>
+        </div>
+        
+        <div class="row header-info">
+          <div class="col-sm-10 col-sm-offset-1 text-center">
+            
+                </div><!--End Button Row-->  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <div class="mouse-icon hidden-xs">
+				<div class="scroll"></div>
+			</div>
+    
+    <section id="be-the-first" class="pad-xl">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2 text-center margin-30 wow fadeIn" data-wow-delay="0.6s">
+              <h2><b>Stay Indoors. Stay Healthy</b></h2>
+              <br /><br /><br /><br />
+              <p class="lead">According to a new study, COVID-19 stay-at-home orders have had a negative impact on health behaviors, including sleep quality, physical activity, weight maintenance, and consumption of sweets.</p>
+          </div>
+        </div>
+        
+        <div class="iphone wow fadeInUp" data-wow-delay="1s">
+
+        </div>
+      </div>
+    </section>
+    
+    <section id="main-info" class="pad-xl">
+	    <div class="container">
+		    <div class="row">
+			    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.4s">
+				    <hr class="line purple">
+				    <h3>Excercising Your Brain Muscle</h3>
+                    <p>Your brain has the ability to learn and grow as you age — a process called brain plasticity — but for it to do so, you have to train it on a regular basis.</p>
+			    </div>
+			    <div class="col-sm-4 wow fadeIn" data-wow-delay="0.8s">
+				    <hr  class="line blue">
+				    <h3>Fulfilling Your Body Needs</h3>
+                    <p>Since exercise is known to have an impact on the functioning of the immune system, it is important to make sure that is still a priority even when staying indoors.</p>
+			    </div>
+			    <div class="col-sm-4 wow fadeIn" data-wow-delay="1.2s">
+				    <hr  class="line yellow">
+				    <h3>Exploring Your Interests</h3>
+                    <p>Health experts recommend  keeping up with hobbies at home as a distraction from stressful and negative thoughts. Creative outlets such as music, art, and journaling can be therapeutic. Anyone can get started with it from instructional videos and tutorials!</p>
+			    </div>
+		    </div>
+	    </div>
+    </section>
+        
+        
+    <!--Pricing-->
+    <section id="pricing" class="pad-lg">
+        <div class="container">
+            <div class="row margin-40">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <h2 class="white">Log Your Activities</h2>
+                    <p class="white">Fill out the activities you've completed and track your progress to improve your mental and physical health as well as explore new interests during quarrantine.</p>
+                </div>
+            </div>
+            <!------------MENTAL HEALTH PART----------------->
+            <div class="row margin-50">
+                <form name="mentalForm" action="http://auckland.bauer.uh.edu/Students/parks/echo.asp" target="_blank">
+                    <div class="col-sm-4 pricing-container wow fadeInUp" data-wow-delay="1s">
+                        <br />
+                        <ul class="list-unstyled pricing-table text-center">
+                            <li class="headline"><h4 class="white">Mental Health</h4></li>
+                            <li class="price"><img src="img/mental_icon.png" style="width: 100px; height: 100px;"></li>
+                            <li class="price">
+                                <div class="w3-light-grey w3-round-xlarge">
+                                    <div id="mental_bar" class="w3-container w3-blue w3-round-xlarge" style="width:0%">0%</div>
+                                </div>
+                            </li>
+                            <li class="info">Sharpen your mind or spend time reflecting to boost your mood.</li>
+                            <li class="features first"><img src="img/empty_circle.png" id="check1" onclick="checkMark1()" style="width: 30px; height: 30px;">Solve Puzzles</li>
+                            <input type="hidden" id="puzzles" name="puzzles" value="0">
+                            <li class="features"><img src="img/empty_circle.png" id="check2" onclick="checkMark2()" style="width: 30px; height: 30px;">Read a Book</li>
+                            <input type="hidden" id="books" name="books" value="0">
+                            <li class="features"><img src="img/empty_circle.png" id="check3" onclick="checkMark3()" style="width: 30px; height: 30px;">Journal</li>
+                            <input type="hidden" id="journal" name="journal" value="0">
+                            <li class="features"><img src="img/empty_circle.png" id="check4" onclick="checkMark4()" style="width: 30px; height: 30px;">Meditate</li>
+                            <input type="hidden" id="meditate" name="meditate" value="0">
+
+                            <li class="features last btn btn-secondary btn-wide"><a href="javascript: submitMental()">Submit</a></li>
+                            <li class="features last btn btn-secondary btn-wide"><a href="javascript: reset1()">Reset</a></li>
+
+
+                        </ul>
+
+                    </div>
+                </form>
+
+                <form name="physicalForm" action="http://auckland.bauer.uh.edu/Students/parks/echo.asp" target="_blank">
+                    <div class="col-sm-4 pricing-container wow fadeInUp" data-wow-delay="0.4s">
+                        <ul class="list-unstyled pricing-table active text-center">
+                            <li class="headline"><h4 class="white">Physical Wellness</h4></li>
+                            <li class="price"><img src="img/exercise2.png" style="width: 130px; height: 130px;"></li>
+                            <li class="price">
+                                <div class="w3-light-grey w3-round-xlarge">
+                                    <div id="phys_bar" class="w3-container w3-blue w3-round-xlarge" style="width:0%">0%</div>
+                                </div>
+                            </li>
+                            <li class="info">Get your blood pumping with an invigorating workout! Fuel your body with nutritious foods and sufficient sleep.</li>
+                            <li class="features first"><img src="img/empty_circle.png" id="check5" onclick="checkMark5()" style="width: 30px; height: 30px;">Exercise</li>
+                            <input type="hidden" id="exercise" name="exercise" value="0">
+                            <li class="features"><img src="img/empty_circle.png" id="check6" onclick="checkMark6()" style="width: 30px; height: 30px;">Eat a Healthy Meal</li>
+                            <input type="hidden" id="eat" name="eat" value="0">
+                            <li class="features"><img src="img/empty_circle.png" id="check7" onclick="checkMark7()" style="width: 30px; height: 30px;">7-9 Hours of Sleep</li>
+                            <input type="hidden" id="sleep" name="sleep" value="0">
+                            <li class="features last btn btn-secondary btn-wide"><a href="javascript: submitPhysical()">Submit</a></li>
+                            <li class="features last btn btn-secondary btn-wide"><a href="javascript: reset2()">Reset</a></li>
+
+                        </ul>
+                    </div>
+                </form>
+
+
+
+                <form name="hobbiesForm" action="http://auckland.bauer.uh.edu/Students/parks/echo.asp" target="_blank">
+                    <div class="col-sm-4 pricing-container wow fadeInUp" data-wow-delay="1.3s">
+                        <br />
+                        <ul class="list-unstyled pricing-table text-center">
+                            <li class="headline"><h4 class="white">Interests & Hobbies</h4></li>
+                            <li class="price"><img src="img/hobbies_icon.png" style="width: 100px; height: 100px;"></li>
+                            <li class="price">
+                                <div class="w3-light-grey w3-round-xlarge">
+                                    <div id="hobbies_bar" class="w3-container w3-blue w3-round-xlarge" style="width:0%">0%</div>
+                                </div>
+                            </li>
+                            <li class="info">Destress and explore new interests. You may discover you have a hidden talent!</li>
+                            <li class="features first"><img src="img/empty_circle.png" id="check8" onclick="checkMark8()" style="width: 30px; height: 30px;">New Recipe</li>
+                            <input type="hidden" id="recipe" name="recipe" value="0">
+                            <li class="features"><img src="img/empty_circle.png" id="check9" onclick="checkMark9()" style="width: 30px; height: 30px;">Gardening</li>
+                            <input type="hidden" id="gardening" name="gardening" value="0">
+                            <li class="features"><img src="img/empty_circle.png" id="check10" onclick="checkMark10()" style="width: 30px; height: 30px;">New Activities</li>
+                            <input type="hidden" id="nactivities" name="nactivities" value="0">
+                            <li class="features"><img src="img/empty_circle.png" id="check11" onclick="checkMark11()" style="width: 30px; height: 30px;">Music or Podcast</li>
+                            <input type="hidden" id="music" name="music" value="0">
+                            <li class="features last btn btn-secondary btn-wide"><a href="javascript: submitHobbies()">Submit</a></li>
+                            <li class="features last btn btn-secondary btn-wide"><a href="javascript: reset3()">Reset</a></li>
+
+                        </ul>
+                    </div>
+                </form>
+
+            </div>
+            <button class="features last btn btn-secondary btn-wide" onclick="viewEntries()">View Entries</button>
+            <div id="entries"></div>;
+        </div>
+    </section>
+    
+    
+   
+    <footer>
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-sm-8 margin-20">
+            <ul class="list-inline social">
+              <li>Connect with us on</li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+          </div>
+          
+          <div class="col-sm-4 text-right">
+            <p><small>Copyright &copy; 2014. All rights reserved. <br>
+	            Created by <a href="http://visualsoldiers.com">Visual Soldiers</a></small></p>
+          </div>
+        </div>
+        
+      </div>
+    </footer>
+
+    <button class="open-button" onclick="openForm()">Sign In</button>
+
+    <div class="form-popup" id="myForm">
+      <form name="loginform" action="/action_page.php" class="form-container">
+        <h1>Login</h1>
+
+        <label for="email"><b>Email</b></label>
+        <input id="username" type="text" placeholder="Enter Email" name="username" required>
+        
+        <label for="psw"><b>Password</b></label>
+        <input id ="psw" type="password" placeholder="Enter Password" name="psw" required>
+        <a href="#">New User</a>
+        <br>
+
+        <button type="button" class="btn" onclick="loginapproval()">Login</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div> 
+  </body>
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
+</html>
